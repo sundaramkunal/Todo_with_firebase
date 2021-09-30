@@ -1,8 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.css';
+import { Provider } from 'react-redux';
+import store from './store';
+import Container from './components/Container';
+
+const App = () => (
+  <Provider store={store}>
+    <Container />
+  </Provider>
+);
+
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import { db } from "./firebase_config";
+import firebase from "firebase";
+import TodoListItem from "./Todo";
 
 function App() {
+  const [todo, setTodo] = useState([]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div>
+        <h1>Sanskar Tiwari Todos App 😃</h1>
+        <form>
+          <TextField
+            id="standard-basic"
+            label="Write a Todo"
+            value={todoInput}
+            style={{ width: "90vw", maxWidth: "500px" }}
+            onChange={(e) => setTodoInput(e.target.value)}
+          />
+          <Button
+            type="submit"
+            variant="contained"
+            onClick={addTodo}
+            style={{ display: "none" }}
+          >
+            Default
+          </Button>
+        </form>
+
+        <div>
+          {todos.map((todo) => (
+            <TodoListItem
+              todo={todo.todo}
+              inprogress={todo.inprogress}
+              id={todo.id}
+            />
+          ))}
+        </div>
+      </div>
   );
 }
-
-export default App;
